@@ -1,24 +1,18 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { Product } from "./types/type";
-import { GET } from "./services/api";
-import { ROUTE_PRODUCT } from "./services/routes";
-import Card from "./components/UI/Card/Card";
+import { useRouter } from "next/navigation";
+import Button from "./components/UI/Button/Button";
 
-export default function Home() {
-  const [product, setProduct] = useState<Product[]>([]);
-  useEffect(() => {
-    const FetchProduct = async () => {
-      const response = await GET(ROUTE_PRODUCT);
-      setProduct(response);
-    };
-    FetchProduct();
-  }, []);
+export default function Page() {
+  const router = useRouter();
 
   return (
-    <div>
-      <Card />
-    </div>
+    <Button
+      type="button"
+      style={"btn btn-primary"}
+      onClick={() => router.push("/products")}
+    >
+      Products
+    </Button>
   );
 }

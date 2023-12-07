@@ -1,11 +1,14 @@
 import { Product } from "@/app/types/type";
 import Image from "next/image";
+import Button from "../Button/Button";
+
+type ProductProps = Product;
 
 type Props = {
   onClick: () => void;
 };
 
-const CardProductDetail = ({ image, onClick, title, id }: Product & Props) => {
+const CardProductDetail = ({ image, onClick, title }: ProductProps & Props) => {
   return (
     <div className="card lg:card-side bg-base-100 shadow-xl m-5">
       <figure>
@@ -15,9 +18,9 @@ const CardProductDetail = ({ image, onClick, title, id }: Product & Props) => {
         <h2 className="card-title">{title}</h2>
         <p>Click the button to listen on Spotiwhy app.</p>
         <div className="card-actions justify-end">
-          <button className="btn btn-primary" onClick={onClick}>
-            Listen
-          </button>
+          <Button type="button" style={"btn btn-primary"} onClick={onClick}>
+            Buy Now
+          </Button>
         </div>
       </div>
     </div>

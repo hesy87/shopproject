@@ -7,12 +7,21 @@ export default function Page() {
   const router = useRouter();
 
   return (
-    <Button
-      type="button"
-      style={"btn btn-primary"}
-      onClick={() => router.push("/products")}
-    >
-      Products
-    </Button>
+    <>
+      <Button
+        type="button"
+        style={"btn btn-primary"}
+        onClick={() => router.push("/products")}
+      >
+        Products
+      </Button>
+      <Button
+        type="button"
+        style={"btn btn-primary"}
+        onClick={() => router.push("/auth")}
+      >
+        Login
+      </Button>
+    </>
   );
 }

@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import { POST } from "../services/api";
-import { ROUTE_AUTH, ROUTE_USERS } from "../services/routes";
+import { ROUTE_AUTH } from "../services/routes";
 
 type user = {
   username: string | undefined;
@@ -19,20 +19,19 @@ const Login = () => {
   useEffect(() => {
     const fetchUser = async () => {
       const response = await POST(ROUTE_AUTH, {
-        method: "POST",
         body: JSON.stringify({
-          username: user?.username,
-          password: user?.password,
+          method: "POST",
+          username: "mor_2314",
+          password: "83r5^_",
         }),
       });
-      console.log(response);
 
-      // setToken(response);
+      setToken(response);
     };
     fetchUser();
-  });
+  }, [user]);
 
-  const submitHandler = () => {
+  const submitHandler = (event: React.FormEvent<HTMLFormElement>) => {
     event?.preventDefault();
     setUser({
       username: usernameRef.current?.value,
@@ -43,7 +42,7 @@ const Login = () => {
   return (
     <form
       className="flex flex-col justify-start items-start m-10"
-      onSubmit={submitHandler}
+      onSubmit={(event) => submitHandler(event)}
     >
       <label htmlFor="name">Username</label>
       <input
